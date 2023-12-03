@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 export default async function WebsearchPage({searchParams}) {
@@ -5,9 +6,21 @@ export default async function WebsearchPage({searchParams}) {
     `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}`
 
   )
+  if(!response.ok){
+    throw new Error('Something went wrong');
+  }
   const data =await response.json()
   console.log(data)
   const result = data.items
+  if(!result){
+    return<div className='flex flex-col justify-center items-center pt-10'>
+      <h1 className='text-3xl mb-4'>No result found</h1>
+      <p className='text-lg'>
+        Try search for something else go back to homepage 
+      </p>
+      <Link className='text-blue-500' href='/'>Home</Link>
+    </div> 
+  }
   return <>
     {result && result.map(result =><h1>{result.title}</h1> )}
   </>
