@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
-import { FaMicrophone } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 
 export default function SearchBar() {
@@ -35,17 +34,17 @@ export default function SearchBar() {
       onChange={(e)=> setInput(e.target.value)}
       value={input}
       />
-    <FaMicrophone className='text-lg'/>
+    
 
 
 
     </form>
     <div className='flex flex-col space-y-2 sm:space-y-0 sm:space-x-4 justify-center sm:flex-row mt-8'>
-      <button onClick={handleSubmit} className='btn'>Search button</button>
+      <button onClick={handleSubmit} className='btn'>Search</button>
       <button disabled={randomSearchLoading} onClick={randomSearch} className='btn flex items-center justify-center disabled:opacity-80'>
         {randomSearchLoading? (
           <img src="spinner.svg" alt='loading...' className='h-6 text-center'/>)
-         : ("I am feeling lucky") }
+         : ("Random") }
         
         </button>
 

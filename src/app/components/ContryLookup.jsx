@@ -12,6 +12,6 @@ export default function ContryLookup() {
   }, []);
   
     return (
-    <div>{country}</div>
+    <div>Current location: {country}</div>
   )
 }
