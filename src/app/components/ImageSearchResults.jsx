@@ -11,13 +11,13 @@ export default function ImageSearchResults({results}) {
         {results.items.map((result) => (
             <div className="mb-8" key={result.link}>
                 <div className='group'>
-                    <Link className='' href={result}>
+                    <Link className='' href={result.image.contextLink}>
                         <img src={result.link} alt={result.title} className='h-60 group-hover:shadow-xl w-full object-contain transition-shadow'/>
                     </Link>
-                    <Link href={result}>
+                    <Link href={result.image.contextLink}>
                         <h2 className='group-hover:underline truncate text-xl'>{result.title}</h2>
                     </Link>
-                    <Link href={result}>
+                    <Link href={result.image.contextLink}>
                         <p className='group-hover:underline text-gray-600 '>{result.displayLink}</p>
                     </Link>
                 </div>
