@@ -10,12 +10,12 @@ export default async function WebsearchPage({searchParams}) {
 
   )
   if(!response.ok){
+    console.log(response);
     throw new Error('Something went wrong');
   }
   const data =await response.json()
-  console.log(data)
-  const result = data.items
-  if(!result){
+  const results = data.items
+  if(!results){
     return<div className='flex flex-col justify-center items-center pt-10'>
       <h1 className='text-3xl mb-4'>No result found</h1>
       <p className='text-lg'>
@@ -25,7 +25,7 @@ export default async function WebsearchPage({searchParams}) {
     </div> 
   }
   return <>
-    {result && <WebSearchResults results={data}/>}
+    {results && <WebSearchResults results={data}/>}
 
   </>
     
